@@ -34,7 +34,19 @@ return {
             -- Server definitions
             local servers = {
                 clangd = {},
-                ts_ls = {},
+                ts_ls = {
+                    root_dir = function(bufnr, on_dir)
+                        local deno = vim.fs.root(bufnr, { "deno.json", "deno.jsonc", "deno.lock" })
+                        local project = vim.fs.root(bufnr, {
+                            "package-lock.json", "yarn.lock", "pnpm-lock.yaml",
+                            "bun.lockb", "bun.lock", "tsconfig.json", ".git",
+                        })
+                        if deno and (not project or #deno >= #project) then
+                            return
+                        end
+                        on_dir(project or vim.fn.getcwd())
+                    end,
+                },
                 pyright = {
                     settings = {
                         python = {
@@ -60,6 +72,10 @@ return {
                 vim.lsp.config(name, config)
                 vim.lsp.enable(name)
             end
+
+            -- Disable LSP servers that auto-enable via nvim-lspconfig defaults
+            -- but are incompatible with this Neovim dev build (nested root_dir tables)
+            vim.lsp.enable("tsgo", false)
         end,
     },
 }

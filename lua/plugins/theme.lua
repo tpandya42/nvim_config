@@ -13,16 +13,16 @@ return {
                     transparency = true,   -- keep transparent background
                 },
                 highlight_groups = {
-                    -- Fine-grained syntax highlighting overrides
-                    TSFunction   = { fg = "#c4a7e7", bold = true },   -- purple functions
-                    TSVariable   = { fg = "#ebbcba" },                -- soft pink variables
-                    TSConstant   = { fg = "#f6c177" },                -- orange constants
-                    TSString     = { fg = "#9ccfd8" },                -- cyan strings
-                    TSNumber     = { fg = "#f6c177" },                -- same as constants
-                    TSType       = { fg = "#31748f", bold = true },   -- dark cyan types
-                    TSKeyword    = { fg = "#ea9a97", bold = true },   -- red keywords
-                    TSConditional= { fg = "#ea9a97", italic = true }, -- red if/else/for
-                    TSOperator   = { fg = "#c4a7e7" },                -- purple operators
+                    -- Fine-grained syntax highlighting overrides (using @capture names)
+                    ["@function"]    = { fg = "#c4a7e7", bold = true },   -- purple functions
+                    ["@variable"]    = { fg = "#ebbcba" },                -- soft pink variables
+                    ["@constant"]    = { fg = "#f6c177" },                -- orange constants
+                    ["@string"]      = { fg = "#9ccfd8" },                -- cyan strings
+                    ["@number"]      = { fg = "#f6c177" },                -- same as constants
+                    ["@type"]        = { fg = "#31748f", bold = true },   -- dark cyan types
+                    ["@keyword"]     = { fg = "#ea9a97", bold = true },   -- red keywords
+                    ["@keyword.conditional"] = { fg = "#ea9a97", italic = true }, -- red if/else/for
+                    ["@operator"]    = { fg = "#c4a7e7" },                -- purple operators
                 },
             })
 

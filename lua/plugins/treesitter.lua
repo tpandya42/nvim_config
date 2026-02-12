@@ -4,23 +4,26 @@ return {
         build = ":TSUpdate",
         lazy = false,
         config = function()
-            local status_ok, ts_configs = pcall(require, "nvim-treesitter.configs")
-            if not status_ok then return end
+            local ensure_installed = {
+                "c", "python", "javascript", "typescript", "tsx",
+                "html", "css", "go", "lua", "bash",
+            }
 
-            ts_configs.setup({
-                ensure_installed = { "c", "python", "javascript", "typescript", "tsx", "html", "css", "go" },
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                    use_languagetree = true,
-                },
-                indent = { enable = true },
-                auto_install = true,
-                rainbow = {
-                    enable = true,
-                    extended_mode = true, -- highlight variables & parameters
-                    max_file_lines = nil,
-                },
+            -- Install missing parsers (async, runs in background)
+            local installed = require("nvim-treesitter").get_installed()
+            local to_install = vim.tbl_filter(function(lang)
+                return not vim.tbl_contains(installed, lang)
+            end, ensure_installed)
+
+            if #to_install > 0 then
+                require("nvim-treesitter").install(to_install)
+            end
+
+            -- Enable treesitter highlighting + indent for all supported filetypes
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function()
+                    pcall(vim.treesitter.start)
+                end,
             })
         end,
     },

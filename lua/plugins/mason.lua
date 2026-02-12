@@ -15,13 +15,12 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
-                    "clangd",
+		           "clangd",
                     "ts_ls",
                     "pyright",
                     "bashls",
                     "jdtls",
-                    "lua_ls",
-                },
+                    "lua_ls",              },
                 automatic_installation = true,
             })
         end,

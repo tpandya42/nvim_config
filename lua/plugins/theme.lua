@@ -14,16 +14,16 @@ return {
                 },
                 highlight_groups = {
                     -- Fine-grained syntax highlighting overrides (using @capture names)
-                    ["@function"]    = { fg = "#c4a7e7", bold = true },   -- purple functions
-                    ["@variable"]    = { fg = "#ebbcba" },                -- soft pink variables
-                    ["@constant"]    = { fg = "#f6c177" },                -- orange constants
-                    ["@string"]      = { fg = "#9ccfd8" },                -- cyan strings
-                    ["@number"]      = { fg = "#f6c177" },                -- same as constants
-                    ["@type"]        = { fg = "#31748f", bold = true },   -- dark cyan types
-                    ["@keyword"]     = { fg = "#ea9a97", bold = true },   -- red keywords
-                    ["@keyword.conditional"] = { fg = "#ea9a97", italic = true }, -- red if/else/for
-                    ["@operator"]    = { fg = "#c4a7e7" },                -- purple operators
-                },
+                    ["@function"]    = { fg = "#458588", bold = true },   -- blue
+                    ["@variable"]    = { fg = "#ebdbb2" },                -- fg1
+                    ["@constant"]    = { fg = "#d79921" },                -- yellow
+                    ["@string"]      = { fg = "#98971a" },                -- green
+                    ["@number"]      = { fg = "#d79921" },                -- yellow
+                    ["@type"]        = { fg = "#689d6a", bold = true },   -- aqua
+                    ["@keyword"]     = { fg = "#b16286", bold = true },   -- purple
+                    ["@keyword.conditional"] = { fg = "#b16286", italic = true },
+                    ["@operator"]    = { fg = "#fe8019" },                -- orange                
+					},
             })
 
             -- Apply the colorscheme

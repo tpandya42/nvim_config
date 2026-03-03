@@ -14,9 +14,9 @@ return {
                 },
                 highlight_groups = {
                     -- Fine-grained syntax highlighting overrides (using @capture names)
-                    ["@function"]    = { fg = "#458588", bold = true },   -- blue
+                    ["@function"]    = { fg = "#D12A00", bold = true },   -- blue
                     ["@variable"]    = { fg = "#ebdbb2" },                -- fg1
-                    ["@constant"]    = { fg = "#d79921" },                -- yellow
+                    ["@constant"]    = { fg = "#FF3500" },                -- yellow
                     ["@string"]      = { fg = "#98971a" },                -- green
                     ["@number"]      = { fg = "#d79921" },                -- yellow
                     ["@type"]        = { fg = "#689d6a", bold = true },   -- aqua

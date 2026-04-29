@@ -4,6 +4,7 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
+			"b0o/schemastore.nvim",
         },
         config = function()
             local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -63,6 +64,18 @@ return {
                         },
                     },
                 },
+
+				dockerls = {},
+				yamlls = {
+					settings = {
+						yaml = {
+							schemas = require("schemastore").yaml.schemas(),
+							validate = true,
+							completion = true,
+							hover = true,
+						}
+					}
+				},
             }
 
             for name, config in pairs(servers) do
